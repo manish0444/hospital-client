@@ -9,10 +9,9 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold">International Friendship Children's Hospital</h3>
+            <h3 className="text-2xl font-bold">CMC</h3>
             <p className="text-gray-400 leading-relaxed">
-              Providing exceptional healthcare with compassion and innovation
-              since 2202. Your health is our priority.
+             CMC Chiropractic & Neurorehabilitation — Restoring movement, relieving pain, and redefining recovery.
             </p>
             <div className="flex space-x-4">
               <a
@@ -101,11 +100,11 @@ export const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/departments"
+                  href="/services"
                   className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
                   <ChevronDown className="h-4 w-4 mr-2 transform -rotate-90" />
-                  Departments
+                  Services
                 </Link>
               </li>
               <li>
@@ -144,7 +143,7 @@ export const Footer = () => {
               <ul className="space-y-2 text-gray-400">
                 <li className="flex items-center">
                   <MapPin className="h-4 w-4 mr-2" />
-                 Maharajgunj
+                 Saket Complex, Tripureshwor 11
                 </li>
                 <li className="flex items-center">
                   <MapPin className="h-4 w-4 mr-2" />
@@ -152,11 +151,11 @@ export const Footer = () => {
                 </li>
                 <li className="flex items-center">
                   <Phone className="h-4 w-4 mr-2" />
-                 01-5914999 / 01-5916444
+                +977 9865366154
                 </li>
                 <li className="flex items-center">
                   <Mail className="h-4 w-4 mr-2" />
-                 info@ifch.com.np
+                 chiropracticmanual@gmail.com
                 </li>
               </ul>
             </div>

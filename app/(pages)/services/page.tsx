@@ -1,84 +1,122 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Clock, HeartPulse, Stethoscope, Users, Phone, MapPin, ArrowRight, Mail, Microscope, Brain, Bone, Ambulance, Eye, Syringe, Hospital } from "lucide-react";
+import { Check, Clock, HeartPulse, Stethoscope, Users, Phone, MapPin, ArrowRight, Mail, Microscope, Brain, Bone, Ambulance, Eye, Syringe, Hospital, Radio, Zap, Settings, Activity } from "lucide-react";
 import Link from "next/link";
 
 const ServicesPage = () => {
-  const services = [
-    {
-      id: "inpatient",
-      icon: <Stethoscope className="h-6 w-6" />,
-      title: "Inpatient Services",
-      description: "Comprehensive care for patients requiring hospital admission with 24/7 monitoring.",
-      features: ["Private rooms", "Specialized nursing care", "Post-operative care", "Critical care units"],
-      image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "outpatient",
-      icon: <Users className="h-6 w-6" />,
-      title: "Outpatient Clinics",
-      description: "Specialized clinics for consultations, follow-ups, and minor procedures without admission.",
-      features: ["Specialist consultations", "Follow-up care", "Minor procedures", "Vaccinations"],
-      image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "diagnostics",
-      icon: <Microscope className="h-6 w-6" />,
-      title: "Diagnostic Services",
-      description: "State-of-the-art imaging and laboratory services for accurate diagnosis.",
-      features: ["MRI & CT scanning", "Ultrasound", "Laboratory tests", "Digital X-ray"],
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "cardiology",
-      icon: <HeartPulse className="h-6 w-6" />,
-      title: "Cardiology",
-      description: "Comprehensive heart care with advanced cardiac diagnostics and treatment.",
-      features: ["Echocardiography", "Cardiac catheterization", "Stress testing", "Pacemaker implantation"],
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "neurology",
-      icon: <Brain className="h-6 w-6" />,
-      title: "Neurology",
-      description: "Expert care for disorders of the nervous system and brain.",
-      features: ["EEG", "EMG/NCS", "Neurological rehabilitation", "Stroke care"],
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "orthopedics",
-      icon: <Bone className="h-6 w-6" />,
-      title: "Orthopedics",
-      description: "Treatment for musculoskeletal injuries and conditions.",
-      features: ["Joint replacement", "Arthroscopy", "Fracture management", "Sports medicine"],
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "emergency",
-      icon: <Ambulance className="h-6 w-6" />,
-      title: "Emergency Care",
-      description: "24/7 emergency services for critical health situations.",
-      features: ["Trauma center", "Critical care", "Emergency surgery", "Acute care"],
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "ophthalmology",
-      icon: <Eye className="h-6 w-6" />,
-      title: "Ophthalmology",
-      description: "Complete eye care services from routine exams to advanced surgery.",
-      features: ["Cataract surgery", "Retina services", "Glaucoma management", "LASIK"],
-      image: "https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      id: "dental",
-      icon: <Hospital className="h-6 w-6" />,
-      title: "Dental Care",
-      description: "Comprehensive dental services for all ages.",
-      features: ["Routine cleaning", "Root canal treatment", "Dental implants", "Orthodontics"],
-      image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-    }
-  ];
+const services = [
+  {
+    id: "physiotherapy",
+    icon: <Activity className="h-6 w-6" />,
+    title: "Physiotherapy Services",
+    description: "Comprehensive physical therapy services including conventional and advanced treatment techniques for pain management and rehabilitation.",
+    features: ["Conventional Physiotherapy", "Advanced Physiotherapy", "Chronic Pain Management", "Sports Rehabilitation"],
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "conventional-physio",
+    icon: <Settings className="h-6 w-6" />,
+    title: "Conventional Physiotherapy",
+    description: "Traditional physiotherapy approaches including electrotherapy, exercise therapy, and specialized rehabilitation programs.",
+    features: [
+      "Electrotherapy",
+      "Exercise Therapy", 
+      "Orthopedic Rehabilitation",
+      "Neurological Rehabilitation",
+      "Geriatric Rehabilitation"
+    ],
+    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "advanced-physio",
+    icon: <Zap className="h-6 w-6" />,
+    title: "Advanced Physiotherapy",
+    description: "Cutting-edge physiotherapy techniques using evidence-based manual therapy and specialized treatment modalities.",
+    features: [
+      "Evidence Based Manual Therapy",
+      "Taping Techniques", 
+      "Dry Needling Techniques",
+      "Ergonomics",
+      "Chronic Pain Management"
+    ],
+    image: "https://images.unsplash.com/photo-1571019614241-5e5c8b5e8b1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "electrotherapy",
+    icon: <Radio className="h-6 w-6" />,
+    title: "Electrotherapy",
+    description: "Advanced electrical modalities to interfere with pain signals, speed up tissue healing, and re-educate muscles.",
+    features: [
+      "Ultrasound therapy",
+      "Class 4 laser therapy", 
+      "Pain signal interference",
+      "Tissue healing acceleration",
+      "Nerve stimulation"
+    ],
+    image: "https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "orthopedic-rehab",
+    icon: <Bone className="h-6 w-6" />,
+    title: "Orthopedic Rehabilitation",
+    description: "Tailor-made rehabilitation protocols for musculoskeletal injuries and post-operative recovery.",
+    features: [
+      "Shoulder & Knee Arthroscopies",
+      "Total Joint Replacements", 
+      "Post Fracture Rehabilitation",
+      "Rotator Cuff Repair",
+      "Sports Injury Recovery"
+    ],
+    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "neurological-rehab",
+    icon: <Brain className="h-6 w-6" />,
+    title: "Neurological Rehabilitation",
+    description: "Evidence-based approaches for progressive and non-progressive neurological conditions.",
+    features: [
+      "Stroke Rehabilitation",
+      "Spinal Cord Injuries", 
+      "Parkinson's Disease",
+      "Multiple Sclerosis",
+      "Balance & Coordination Training"
+    ],
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "inpatient",
+    icon: <Stethoscope className="h-6 w-6" />,
+    title: "Inpatient Services",
+    description: "Comprehensive care for patients requiring hospital admission with 24/7 monitoring.",
+    features: ["Private rooms", "Specialized nursing care", "Post-operative care", "Critical care units"],
+    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "outpatient",
+    icon: <Users className="h-6 w-6" />,
+    title: "Outpatient Clinics",
+    description: "Specialized clinics for consultations, follow-ups, and minor procedures without admission.",
+    features: ["Specialist consultations", "Follow-up care", "Minor procedures", "Vaccinations"],
+    image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "diagnostics",
+    icon: <Microscope className="h-6 w-6" />,
+    title: "Diagnostic Services",
+    description: "State-of-the-art imaging and laboratory services for accurate diagnosis.",
+    features: ["MRI & CT scanning", "Ultrasound", "Laboratory tests", "Digital X-ray"],
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "cardiology",
+    icon: <HeartPulse className="h-6 w-6" />,
+    title: "Cardiology",
+    description: "Comprehensive heart care with advanced cardiac diagnostics and treatment.",
+    features: ["Echocardiography", "Cardiac catheterization", "Stress testing", "Pacemaker implantation"],
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  }
+];
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -86,7 +124,7 @@ const ServicesPage = () => {
         {/* Hero Section */}
         <section className="relative bg-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-28">
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10 py-10 md:py-18">
             <div className="text-center max-w-3xl mx-auto">
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}

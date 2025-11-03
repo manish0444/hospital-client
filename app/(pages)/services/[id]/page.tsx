@@ -7,115 +7,252 @@ import { useParams } from "next/navigation";
 
 // This would be in a separate file with all service data
 const serviceData = {
-  inpatient: {
-    title: "Inpatient Services",
-    description: "Comprehensive care for patients requiring hospital admission with 24/7 monitoring and specialized medical attention.",
-    longDescription: "Our inpatient services provide round-the-clock medical care for patients who need close monitoring and specialized treatment. We offer comfortable private rooms, dedicated nursing care, and state-of-the-art medical equipment to ensure the best possible outcomes for our patients.",
-    icon: "Stethoscope",
-    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  physiotherapy: {
+    title: "Physiotherapy Services",
+    description: "Comprehensive physiotherapy services including conventional and advanced treatments for various musculoskeletal and neurological conditions.",
+    longDescription: "Our physiotherapy department offers a wide range of evidence-based treatments using both conventional and advanced techniques. We provide personalized rehabilitation programs for orthopedic, neurological, and geriatric conditions, along with specialized pain management and ergonomic solutions.",
+    icon: "Activity",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     features: [
-      "Private rooms with ensuite facilities",
-      "24/7 specialized nursing care",
-      "Post-operative and recovery care",
-      "Critical care and ICU facilities",
-      "Advanced monitoring systems",
-      "Personalized treatment plans",
-      "Nutritional support and dietary planning",
-      "Physical therapy and rehabilitation services"
+      "Conventional Physiotherapy",
+      "Advanced Physiotherapy Techniques",
+      "Chronic Pain Management",
+      "Neurological Rehabilitation",
+      "Orthopedic Rehabilitation",
+      "Geriatric Care",
+      "Sports Injury Treatment",
+      "Ergonomic Assessments"
     ],
     procedures: [
-      "Major surgical recovery",
-      "Complex medical condition management",
-      "Critical care and intensive monitoring",
-      "Post-operative rehabilitation",
-      "Chronic disease management"
+      "Electrotherapy",
+      "Exercise Therapy",
+      "Manual Therapy",
+      "Dry Needling",
+      "Taping Techniques",
+      "Neurological Rehabilitation",
+      "Orthopedic Rehabilitation",
+      "Geriatric Rehabilitation"
     ],
-    doctors: [
-      {
-        name: "Dr. Rajesh Sharma",
-        specialty: "Internal Medicine",
-        image: "/images/doctor1.jpg",
+    subServices: {
+      conventional: {
+        title: "Conventional Physiotherapy",
+        treatments: [
+          {
+            name: "Electrotherapy",
+            description: "Comprehensive electrotherapy services using electrical signals, sound waves, and electromagnetic radiations to manage pain, accelerate tissue healing, and improve muscle function.",
+            modalities: [
+              "Ultrasound therapy",
+              "Class 4 laser therapy",
+              "Moist heat therapy",
+              "Paraffin Wax bath",
+              "Low and medium frequency electrical stimulation"
+            ],
+            benefits: [
+              "Pain signal interference",
+              "Tissue healing acceleration",
+              "Muscle re-education",
+              "Nerve re-stimulation",
+              "Soft tissue relaxation"
+            ]
+          },
+          {
+            name: "Exercise Therapy",
+            description: "Customized physical activity regimens designed by qualified physiotherapists to restore normal pain-free movement and improve musculoskeletal function.",
+            approaches: [
+              "Closed and open kinematic chain exercises",
+              "Concentric/eccentric/isometric exercises",
+              "Strengthening and stretching exercises",
+              "Anti-gravity exercises",
+              "Cardio-respiratory endurance training"
+            ],
+            benefits: [
+              "Pain reduction",
+              "Improved mobility",
+              "Enhanced strength",
+              "Better fitness levels",
+              "Restored joint range of motion"
+            ]
+          },
+          {
+            name: "Orthopedic Rehabilitation",
+            description: "Tailor-made rehabilitation protocols for musculoskeletal injuries and post-operative conditions, restoring patients to normal or near-normal function.",
+            conditions: [
+              "Shoulder Arthroscopies",
+              "Knee Arthroscopies",
+              "Total Knee Replacement",
+              "Total Hip Replacement",
+              "Post Fracture Fixation",
+              "Rotator Cuff Repair"
+            ],
+            features: [
+              "Evidence-based protocols",
+              "Individualized treatment plans",
+              "Result-oriented approach",
+              "Age-specific rehabilitation"
+            ]
+          },
+          {
+            name: "Neurological Rehabilitation",
+            description: "Advanced evidence-based approaches for treating progressive and non-progressive neurological conditions affecting movement and function.",
+            conditions: [
+              "Cerebro-vascular Accidents (Stroke)",
+              "Traumatic Brain Injuries",
+              "Spinal Cord Injuries",
+              "Parkinson's Disease",
+              "Multiple Sclerosis",
+              "Facial Palsy/Bell's Palsy",
+              "GB Syndrome",
+              "Myasthenia Gravis",
+              "Motor Neuron Disease",
+              "Cerebral Palsy",
+              "Metabolic Neuropathies",
+              "Muscular Dystrophy"
+            ],
+            techniques: [
+              "Motor Relearning Protocol",
+              "Bobath and Brunnstrom approaches",
+              "Constraint Induced Movement Therapy (CIMT)",
+              "Sensory-motor Integration",
+              "Balance and coordination training"
+            ]
+          },
+          {
+            name: "Geriatric Rehabilitation",
+            description: "Specialized rehabilitation addressing neuro-musculoskeletal issues in elderly patients, focusing on mobility, fitness, and fall prevention.",
+            services: [
+              "Mobility improvement",
+              "Fitness enhancement",
+              "Cardio-respiratory endurance training",
+              "Fall risk screening",
+              "Home safety assessments",
+              "Customized exercise programs"
+            ],
+            benefits: [
+              "Reduced fear of falling",
+              "Improved independence",
+              "Enhanced quality of life",
+              "Better balance and coordination"
+            ]
+          }
+        ]
       },
-      {
-        name: "Dr. Sunita Yadav",
-        specialty: "Critical Care Specialist",
-        image: "/images/doctor4.jpg",
+      advanced: {
+        title: "Advanced Physiotherapy",
+        treatments: [
+          {
+            name: "Evidence Based Manual Therapy",
+            description: "Advanced hands-on techniques providing instant relief for various pain conditions through evidence-based manual therapy approaches.",
+            techniques: [
+              "Maitland's techniques",
+              "Mulligan's techniques",
+              "Kaltenborne's techniques",
+              "McKenzie's methods",
+              "Neurodynamics",
+              "Cyriax's techniques"
+            ],
+            conditions: [
+              "Knee pain",
+              "Shoulder pain",
+              "Ankle pain",
+              "Neck pain",
+              "Mid back pain",
+              "Lower back pain"
+            ]
+          },
+          {
+            name: "Complete Chronic Pain Management",
+            description: "Holistic approach to chronic pain management addressing pain lasting more than 12 weeks through multiple therapeutic tools.",
+            approaches: [
+              "Correction of Pathomechanics",
+              "Dry Needling therapy",
+              "Manual therapy",
+              "Pain Neuro Science Education",
+              "Cognitive Behavioral therapy"
+            ],
+            painTypes: [
+              "Dull aching pain",
+              "Sharp shooting pain",
+              "Pinching type pain",
+              "Shocking type pain",
+              "Unexplained pain syndromes"
+            ]
+          },
+          {
+            name: "Taping Techniques",
+            description: "Specialized taping methods for treating musculoskeletal injuries and enhancing athletic performance.",
+            types: [
+              "Sports taping",
+              "Kinesiology taping",
+              "Athletic taping",
+              "Mulligan taping",
+              "McConnell Taping",
+              "Kinesio taping"
+            ],
+            benefits: [
+              "Injury protection",
+              "Enhanced support",
+              "Optimal function maintenance",
+              "Tissue healing acceleration",
+              "Early return to sports",
+              "Prevention of compensatory injuries"
+            ]
+          },
+          {
+            name: "Dry Needling Therapy",
+            description: "Advanced treatment using thin solid filiform needles to address muscle pains caused by Myofascial Trigger Points.",
+            conditions: [
+              "Upper back Pain",
+              "Neck Pain",
+              "Shoulder Region Pain",
+              "Forearm Pain",
+              "Lower Back Pain",
+              "Thigh Pain",
+              "Calf Muscle Pain",
+              "Heel Pain"
+            ],
+            benefits: [
+              "Myofascial trigger point release",
+              "Pain cycle interruption",
+              "Muscle relaxation",
+              "Improved range of motion"
+            ]
+          },
+          {
+            name: "Ergonomics",
+            description: "Science-based approach to optimizing workplace setup and body posture to prevent musculoskeletal problems.",
+            services: [
+              "Workstation assessments",
+              "Posture correction",
+              "Corporate awareness programs",
+              "Individual screening",
+              "Workplace modifications"
+            ],
+            focusAreas: [
+              "IT industry musculoskeletal issues",
+              "Proper workstation setup",
+              "Body posture correction",
+              "Pain syndrome prevention",
+              "Long sitting position management"
+            ]
+          }
+        ]
       }
-    ]
-  },
-  outpatient: {
-    title: "Outpatient Clinics",
-    description: "Specialized clinics for consultations, follow-ups, and minor procedures without the need for hospital admission.",
-    longDescription: "Our outpatient clinics provide convenient access to specialist care without the need for hospital admission. We offer a wide range of specialist consultations, follow-up care, minor procedures, and preventive health services in a comfortable and efficient setting.",
-    icon: "Users",
-    image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    features: [
-      "Specialist consultations across multiple disciplines",
-      "Follow-up care and chronic disease management",
-      "Minor procedures and treatments",
-      "Vaccinations and immunization services",
-      "Health screenings and preventive care",
-      "Diagnostic tests and imaging",
-      "Pharmacy services",
-      "Quick and convenient appointments"
-    ],
-    procedures: [
-      "Specialist consultations",
-      "Minor surgical procedures",
-      "Health screenings and check-ups",
-      "Vaccination and immunization",
-      "Dressing changes and wound care",
-      "Injection therapies"
-    ],
+    },
     doctors: [
       {
-        name: "Dr. Priya Patel",
-        specialty: "Family Medicine",
-        image: "/images/doctor2.jpg",
+        name: "Dr. Arjun Kumar",
+        specialty: "Senior Physiotherapist & Rehabilitation Specialist",
+        image: "/images/physio1.jpg",
       },
       {
-        name: "Dr. Amit Singh",
-        specialty: "General Practitioner",
-        image: "/images/doctor3.jpg",
-      }
-    ]
-  },
-  diagnostics: {
-    title: "Diagnostic Services",
-    description: "State-of-the-art imaging and laboratory services for accurate and timely diagnosis.",
-    longDescription: "Our diagnostic department offers comprehensive imaging and laboratory services using the latest technology. Our team of skilled radiologists and pathologists work together to provide accurate and timely results to support your treatment plan.",
-    icon: "Microscope",
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    features: [
-      "MRI and CT scanning",
-      "Digital X-ray services",
-      "Ultrasound and Doppler studies",
-      "Mammography services",
-      "Clinical laboratory testing",
-      "Pathology services",
-      "Electrocardiogram (ECG)",
-      "Electroencephalogram (EEG)",
-      "Bone density scanning",
-      "Pulmonary function tests"
-    ],
-    procedures: [
-      "Radiology and imaging services",
-      "Laboratory testing and analysis",
-      "Health screening packages",
-      "Cardiac diagnostic tests",
-      "Neurological diagnostic tests",
-      "Cancer screening services"
-    ],
-    doctors: [
-      {
-        name: "Dr. Anjali Mehta",
-        specialty: "Radiologist",
-        image: "/images/doctor5.jpg",
+        name: "Dr. Neha Sharma",
+        specialty: "Neurological Physiotherapy Specialist",
+        image: "/images/physio2.jpg",
       },
       {
-        name: "Dr. Sanjay Kapoor",
-        specialty: "Pathologist",
-        image: "/images/doctor6.jpg",
+        name: "Dr. Vikram Patel",
+        specialty: "Sports Physiotherapist & Manual Therapy Expert",
+        image: "/images/physio3.jpg",
       }
     ]
   }
@@ -124,7 +261,7 @@ const serviceData = {
 const ServiceDetailPage = () => {
   const params = useParams();
   const serviceId = params.serviceName as string;
-  const service = serviceData[serviceId as keyof typeof serviceData] || serviceData.inpatient;
+  const service = serviceData[serviceId as keyof typeof serviceData] || serviceData.physiotherapy;
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -166,7 +303,7 @@ const ServiceDetailPage = () => {
                     Book Appointment
                   </Link>
                   <a
-                    href="tel:9801155251"
+                    href="tel:+9779865366154"
                     className="border border-primary text-primary hover:bg-primary/20 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md flex items-center justify-center gap-2"
                   >
                     <Phone className="h-5 w-5" />
@@ -269,11 +406,11 @@ const ServiceDetailPage = () => {
                     Book Now
                   </Link>
                   <a
-                    href="tel:9801155251"
+                    href="tel:+9779865366154"
                     className="inline-flex items-center justify-center w-full border border-primary text-primary hover:bg-primary/20 px-4 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
                   >
                     <Phone className="h-5 w-5 mr-2" />
-                    Call: 9801155251
+                    Call: +9779865366154
                   </a>
                 </motion.div>
                 

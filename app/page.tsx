@@ -1,81 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Clock, HeartPulse, Stethoscope, Users, Phone, MapPin, ArrowRight, Mail } from "lucide-react";
+import { Check, Clock, HeartPulse, Stethoscope, Users, Phone, MapPin, ArrowRight, Mail, Brain, Bone, Activity } from "lucide-react";
 import Link from "next/link";
 
 const Home = () => {
   const services = [
     {
       icon: <Stethoscope className="h-6 w-6" />,
-      title: "General Medicine",
-      description: "Comprehensive care for adults with acute and chronic illnesses.",
+      title: "Neurological Rehabilitation",
+      description: "Specialized care for stroke, spinal injuries, and neurological disorders using evidence-based approaches.",
+    },
+    {
+      icon: <Bone className="h-6 w-6" />,
+      title: "Orthopedic Rehabilitation",
+      description: "Comprehensive post-surgical and injury rehabilitation for musculoskeletal conditions.",
+    },
+    {
+      icon: <Activity className="h-6 w-6" />,
+      title: "Exercise Therapy",
+      description: "Customized exercise regimens to restore normal pain-free movement and improve function.",
+    },
+    {
+      icon: <Brain className="h-6 w-6" />,
+      title: "Manual Therapy",
+      description: "Evidence-based hands-on techniques for pain relief and improved mobility.",
     },
     {
       icon: <HeartPulse className="h-6 w-6" />,
-      title: "Cardiology",
-      description: "Specialized care for heart conditions and cardiovascular health.",
+      title: "Dry Needling Therapy",
+      description: "Advanced myofascial trigger point treatment for muscle pain and dysfunction.",
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Pediatrics",
-      description: "Expert care for infants, children, and adolescents.",
-    },
-    {
-      icon: <HeartPulse className="h-6 w-6" />,
-      title: "Neurology",
-      description: "Diagnosis and treatment of nervous system disorders.",
-    },
-    {
-      icon: <HeartPulse className="h-6 w-6" />,
-      title: "Orthopedics",
-      description: "Care for musculoskeletal system injuries and disorders.",
-    },
-    {
-      icon: <HeartPulse className="h-6 w-6" />,
-      title: "Emergency Care",
-      description: "24/7 emergency services for critical health situations.",
+      title: "Geriatric Rehabilitation",
+      description: "Specialized care for elderly patients focusing on mobility and fall prevention.",
     },
   ];
 
   const doctors = [
     {
-      name: "Dr. Rajesh Sharma",
-      specialty: "Cardiologist",
+      name: "Dr. Tenzing Norbu Lama, PT",
+      specialty: "Senior Consultant Neurophysiotherapist",
       image: "/images/doctor1.jpg",
     },
     {
-      name: "Dr. Priya Patel",
-      specialty: "Pediatrician",
+      name: "Dr. Saroj K.C., PT",
+      specialty: "Consultant Orthopedic & Sports Physiotherapist",
       image: "/images/doctor2.jpg",
     },
     {
-      name: "Dr. Amit Singh",
-      specialty: "Neurologist",
+      name: "Dr. Sambandha Tandukar, PT",
+      specialty: "Consultant Orthopedic & Sports Physiotherapist",
       image: "/images/doctor3.jpg",
     },
     {
-      name: "Dr. Sunita Yadav",
-      specialty: "Orthopedic Surgeon",
+      name: "Dr. Rajan Suwal, PT",
+      specialty: "Consultant Orthopedic & Sports Physiotherapist",
       image: "/images/doctor4.jpg",
     },
   ];
 
   const testimonials = [
     {
-      quote: "The care I received was exceptional. The doctors took time to listen and explain everything clearly.",
+      quote: "The neurorehabilitation program helped me recover significantly after my stroke. The team is exceptional and truly cares.",
       author: "Ramesh Adhikari",
-      role: "Patient",
+      role: "Stroke Recovery Patient",
     },
     {
-      quote: "Clean facilities and professional staff. My surgery went smoothly and recovery was faster than expected.",
+      quote: "My chronic back pain is completely gone after dry needling and manual therapy. Life-changing treatment!",
       author: "Sita Gurung",
-      role: "Patient",
+      role: "Chronic Pain Patient",
     },
     {
-      quote: "As a referring physician, I'm always confident my patients will receive excellent care at this facility.",
+      quote: "As a referring physician, I confidently send my patients to CMC for their expertise in neurological and orthopedic rehabilitation.",
       author: "Dr. Binod Khanal",
-      role: "General Practitioner",
+      role: "Referring Physician",
     },
   ];
 
@@ -94,7 +94,7 @@ const Home = () => {
                   transition={{ duration: 0.6 }}
                   className="text-4xl md:text-5xl font-bold leading-tight text-text"
                 >
-                  Specialized <span className="text-primary">Care</span> for Little Smiles
+                  Expert <span className="text-primary">Neurophysiotherapy</span> & Rehabilitation
                 </motion.h1>
                 
                 <motion.p 
@@ -103,7 +103,7 @@ const Home = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-lg text-text max-w-lg"
                 >
-                Compassionate pediatric experts providing world-class treatment in a safe, friendly, and child-centered environment.
+                  Specialized care for neurological and orthopedic conditions using evidence-based techniques including manual therapy, dry needling, and advanced rehabilitation protocols.
                 </motion.p>
                 
                 <motion.div
@@ -135,8 +135,8 @@ const Home = () => {
               >
                 <div className="relative overflow-hidden rounded-xl shadow-2xl">
                   <img
-                    src="https://www.future-doctor.de/wp-content/uploads/2024/08/shutterstock_2480850611.jpg"
-                    alt="Doctor"
+                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                    alt="Physiotherapy Treatment"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -146,8 +146,8 @@ const Home = () => {
                       <Users className="h-5 w-5 text-primary/80" />
                     </div>
                     <div>
-                      <p className="font-medium text-text text-sm">24/7 Patient Support</p>
-                      <p className="text-xs text-text">Always here for you</p>
+                      <p className="font-medium text-text text-sm">100+ Patients Monthly</p>
+                      <p className="text-xs text-text">Trusted Care</p>
                     </div>
                   </div>
                 </div>
@@ -161,10 +161,10 @@ const Home = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
-                { value: "50 Beds", label: "Pediatric Capacity" },
-                { value: "Since 2008", label: "Years of Service" },
-                { value: "90K+", label: "Children Served" },
-                { value: "24/7", label: "Emergency Available" },
+                { value: "10+ Years", label: "Clinical Experience" },
+                { value: "100+", label: "Patients Monthly" },
+                { value: "3+", label: "Research Publications" },
+                { value: "4", label: "Specialist Doctors" },
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
@@ -192,19 +192,16 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="space-y-6"
               >
-                {/* About Section */}
-              <h2 className="text-3xl font-bold text-text">About <span className="text-primary">IFCH</span></h2>
-              <p className="text-text leading-relaxed">
-                Established in 2008, IFCH is Nepal’s first cooperative pediatric hospital with 50 beds.
-                We’ve served over 90,000 children through compassionate, affordable care, including charity beds and emergency services.
-              </p>
-
+                <h2 className="text-3xl font-bold text-text">About <span className="text-primary">CMC</span></h2>
+                <p className="text-text leading-relaxed">
+                  CMC Chiropractic and Manual Therapy, founded by Dr. Tenzing Norbu Lama, is a leading neurophysiotherapy and rehabilitation center in Kathmandu. We specialize in evidence-based treatment for neurological and orthopedic conditions.
+                </p>
                 
                 <div className="space-y-4">
                   {[
-                    "Advanced diagnostic equipment",
-                    "Experienced and compassionate staff",
-                    "Patient-centered approach to care"
+                    "Advanced Neurokinetic Therapy & Manual Techniques",
+                    "Experienced Neurophysiotherapy Specialists",
+                    "Evidence-Based Rehabilitation Protocols"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start">
                       <div className="flex-shrink-0 mt-0.5">
@@ -232,8 +229,8 @@ const Home = () => {
               >
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Hospital-de-Bellvitge.jpg/800px-Hospital-de-Bellvitge.jpg"
-                    alt="Hospital Building"
+                    src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
+                    alt="CMC Clinic Interior"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -244,8 +241,8 @@ const Home = () => {
                     </div>
                     <div>
                       <h4 className="font-medium text-text text-sm">Opening Hours</h4>
-                      <p className="text-text/80 text-xs">Sun-Sat: 7:00 A.M - 7:00 P.M</p>
-                      <p className="text-text/80 text-xs">24/7 Emergency</p>
+                      <p className="text-text/80 text-xs">Sun-Sat: 7:00 AM - 7:00 PM</p>
+                      <p className="text-text/80 text-xs">By Appointment</p>
                     </div>
                   </div>
                 </div>
@@ -264,7 +261,7 @@ const Home = () => {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text mb-3"
               >
-                Our <span className="text-cta/80">Services</span>
+                Our <span className="text-cta/80">Specialized Services</span>
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -272,7 +269,7 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text/80 max-w-2xl mx-auto"
               >
-                Comprehensive medical services to meet all your healthcare needs.
+                Comprehensive physiotherapy services using advanced evidence-based techniques.
               </motion.p>
             </div>
             
@@ -317,7 +314,7 @@ const Home = () => {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text mb-3"
               >
-                Meet Our <span className="text-primary/80">Specialists</span>
+                Meet Our <span className="text-primary/80">Expert Team</span>
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -325,7 +322,7 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text/80 max-w-2xl mx-auto"
               >
-                Our team of highly qualified doctors dedicated to your care.
+                Our team of highly qualified physiotherapists specialized in neurological and orthopedic rehabilitation.
               </motion.p>
             </div>
             
@@ -338,12 +335,11 @@ const Home = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200"
                 >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src={doctor.image}
-                      alt={doctor.name}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+                    <div className="text-gray-400 text-center">
+                      <Users className="h-12 w-12 mx-auto mb-2" />
+                      <p className="text-sm">Doctor Photo</p>
+                    </div>
                   </div>
                   <div className="p-5">
                     <h3 className="text-lg font-semibold text-text">{doctor.name}</h3>
@@ -389,7 +385,7 @@ const Home = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text max-w-2xl mx-auto"
               >
-                Hear what our patients say about their experiences.
+                Hear what our patients say about their recovery journey with us.
               </motion.p>
             </div>
             
@@ -407,7 +403,7 @@ const Home = () => {
                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                     </svg>
                   </div>
-                  <p className="text-text/80 italic mb-5">"{testimonial.quote}"</p>
+                  <p className="text-text/80 italic mb-5">&quot;{testimonial.quote}&quot;</p>
                   <div>
                     <p className="font-semibold text-text">{testimonial.author}</p>
                     <p className="text-text/70 text-sm">{testimonial.role}</p>
@@ -418,23 +414,37 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Emergency Section */}
+        {/* Contact Section */}
         <section className="relative bg-white py-16 md:py-24">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold text-text">24/7 Emergency Services</h2>
+                <h2 className="text-3xl font-bold text-text">Visit Our Clinic</h2>
                 <p className="text-text/80">
-                  Immediate care when you need it most. Our emergency department is always open.
+                  Schedule your appointment for specialized neurophysiotherapy and rehabilitation services.
                 </p>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <MapPin className="h-5 w-5 text-primary/80" />
+                    <span className="text-text">Saket Complex, Second Floor, Tripureshwor 11, KMC, Kathmandu, Nepal 44600</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="h-5 w-5 text-primary/80" />
+                    <span className="text-text">+977 9865366154</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-5 w-5 text-primary/80" />
+                    <span className="text-text">chiropracticmanual@gmail.com</span>
+                  </div>
+                </div>
                 <div className="flex flex-col sm:flex-row gap-4 pt-2">
                   <a
-                    href="tel:9801155251"
+                    href="tel:++9779865366154"
                     className="bg-primary/80 text-white hover:bg-primary/90 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md flex items-center justify-center gap-2"
                   >
                     <Phone className="h-5 w-5" />
-                    Call Emergency
+                    Call Now
                   </a>
                   <Link
                     href="/contact"
@@ -447,8 +457,8 @@ const Home = () => {
               <div className="hidden md:block">
                 <div className="relative overflow-hidden rounded-xl shadow-xl">
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRweIalLtH1lgJioEAIZ4wgpMAoydtwxNCpYg&s"
-                    alt="Emergency Services"
+                    src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
+                    alt="CMC Clinic Location"
                     className="w-full h-auto object-cover"
                   />
                 </div>

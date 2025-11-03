@@ -5,9 +5,6 @@ export default function ComingSoon() {
         <h1 className="text-4xl font-bold text-gray-800 mb-4">
           Coming Soon
         </h1>
-        <p className="text-lg text-gray-600">
-          Something exciting is on its way! Stay tuned for updates.
-        </p>
       </div>
     </div>
   );

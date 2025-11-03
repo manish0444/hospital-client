@@ -1,58 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Clock, HeartPulse, Users, Award, Calendar, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { Check, Clock, HeartPulse, Users, Award, Calendar, MapPin, Phone, Mail, ArrowRight, Brain, Bone, Activity } from "lucide-react";
 import Link from "next/link";
 
 const AboutUs = () => {
   const values = [
     {
-      icon: <HeartPulse className="h-6 w-6" />,
-      title: "Child-Centered Care",
-      description: "We prioritize the unique needs of children in all our services and treatments.",
+      icon: <Brain className="h-6 w-6" />,
+      title: "Neurological Expertise",
+      description: "Specialized care for stroke, spinal injuries, and complex neurological conditions.",
     },
     {
       icon: <Award className="h-6 w-6" />,
-      title: "Excellence",
-      description: "We maintain the highest standards in pediatric healthcare and service.",
+      title: "Clinical Excellence",
+      description: "Evidence-based treatments and advanced rehabilitation protocols.",
     },
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Compassionate Service",
-      description: "We treat every child and family with empathy, respect, and dignity.",
+      title: "Patient-Centered Care",
+      description: "Individualized treatment plans focused on each patient's unique recovery goals.",
     },
     {
       icon: <Check className="h-6 w-6" />,
-      title: "Integrity",
-      description: "We uphold honesty and transparency in all our interactions.",
+      title: "Integrity & Transparency",
+      description: "Honest communication and ethical practice in all our treatments.",
     },
   ];
 
   const milestones = [
-    { year: "2007", event: "IFCH established with a vision to serve children" },
-    { year: "2010", event: "Expanded to include specialized pediatric services" },
-    { year: "2015", event: "Recognized as a leading pediatric hospital in Nepal" },
-    { year: "2022", event: "Celebrated 15 years of serving children's health needs" },
+    { year: "2021", event: "CMC Chiropractic and Manual Therapy established by Dr. Tenzing Norbu Lama" },
+    { year: "2022", event: "Expanded services to include specialized neurorehabilitation programs" },
+    { year: "2023", event: "Introduced advanced Dry Needling and Manual Therapy techniques" },
+    { year: "2024", event: "Dr. Tenzing appointed Executive Member of Nepal Physiotherapy Association" },
   ];
 
   const leadership = [
     {
-      name: "Dr. Bhagawan Koirala",
-      position: "Chairman",
-      image: "/images/chairman.jpg",
-      bio: "Renowned cardiologist and healthcare leader with a vision for quality pediatric care in Nepal.",
+      name: "Dr. Tenzing Norbu Lama, PT",
+      position: "Founder & Chairman, Senior Consultant Neurophysiotherapist",
+      image: "/images/dr-tenzing.jpg",
+      bio: "Over 10 years of experience in neurological physiotherapy, chiropractic, and manual therapy. Master's in Neurological Physiotherapy from KLE University, India.",
     },
     {
-      name: "Dr. Ashok K. Singh",
-      position: "Medical Director",
-      image: "/images/medical-director.jpg",
-      bio: "Experienced pediatric specialist leading our medical team with expertise and compassion.",
+      name: "Dr. Saroj K.C., PT",
+      position: "Consultant Orthopedic & Sports Physiotherapist",
+      image: "/images/dr-saroj.jpg",
+      bio: "Specialized in musculoskeletal disorders and sports rehabilitation. Certified in Chiropractic, Manual Therapy, and Dry Needling.",
     },
     {
-      name: "Ms. Sarita K.C.",
-      position: "Administrative Director",
-      image: "/images/admin-director.jpg",
-      bio: "Ensuring smooth operations and exceptional patient experiences across all departments.",
+      name: "Dr. Sambandha Tandukar, PT",
+      position: "Consultant Orthopedic & Sports Physiotherapist",
+      image: "/images/dr-sambandha.jpg",
+      bio: "Expert in sports rehabilitation and integrated manual therapy. Certified practitioner of Chiropractic and Dry Needling therapy.",
     },
   ];
 
@@ -70,7 +70,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.6 }}
                 className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6"
               >
-                About <span className="text-primary">International Friendship Children's Hospital</span>
+                About <span className="text-primary">CMC Chiropractic & Manual Therapy</span>
               </motion.h1>
               
               <motion.p 
@@ -79,8 +79,8 @@ const AboutUs = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-lg text-text mb-8"
               >
-                For over 15 years, we've been providing exceptional pediatric healthcare with compassion, 
-                cutting-edge technology, and a child-first approach.
+                Leading neurophysiotherapy and rehabilitation center in Kathmandu, specializing in evidence-based 
+                treatments for neurological and orthopedic conditions using advanced manual therapy techniques.
               </motion.p>
               
               <motion.div
@@ -111,10 +111,10 @@ const AboutUs = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               {[
-                { value: "30+", label: "Expert Doctors" },
-                { value: "15+", label: "Specialized Departments" },
-                { value: "50K+", label: "Children Treated" },
-                { value: "24/7", label: "Pediatric Emergency" }
+                { value: "4", label: "Expert Physiotherapists" },
+                { value: "100+", label: "Patients Monthly" },
+                { value: "10+", label: "Years Experience" },
+                { value: "3+", label: "Research Publications" }
               ].map((stat, index) => (
                 <motion.div 
                   key={index}
@@ -147,25 +147,24 @@ const AboutUs = () => {
                 </h2>
                 
                 <p className="text-text leading-relaxed">
-                  Established in 2007, International Friendship Children's Hospital (IFCH) was founded with 
-                  a vision to provide specialized pediatric care to the children of Nepal. We began as a 
-                  modest facility and have grown into a comprehensive children's hospital serving thousands 
-                  of young patients annually.
+                  Founded in August 2021 by Dr. Tenzing Norbu Lama, CMC Chiropractic and Manual Therapy 
+                  emerged as a pioneering center dedicated to advanced neurophysiotherapy and rehabilitation 
+                  in Nepal. With a vision to bring world-class neurological and orthopedic care to the community.
                 </p>
                 
                 <p className="text-text leading-relaxed">
-                  Our journey has been guided by our commitment to pediatric excellence, technological 
-                  innovation, and above all, compassionate care for children. We've continuously expanded 
-                  our services and facilities to meet the evolving healthcare needs of Nepal's children.
+                  Our clinic combines expertise in neurological physiotherapy, chiropractic care, and 
+                  evidence-based manual therapy techniques. We&apos;ve successfully treated numerous patients 
+                  with complex neurological conditions, sports injuries, and chronic pain syndromes.
                 </p>
                 
                 <div className="space-y-4">
                   {[
-                    "Child-friendly medical environment",
-                    "Specialized pediatric equipment and technology",
-                    "Continuous staff training in pediatric care",
-                    "Family-centered care philosophy",
-                    "Community child health initiatives"
+                    "Advanced Neurokinetic Therapy (NKT) Level 2 Certified",
+                    "COMT Master's Class in Osteopathic Techniques",
+                    "Evidence-based Manual Therapy approaches",
+                    "Specialized neurological rehabilitation programs",
+                    "Multidisciplinary team of specialist physiotherapists"
                   ].map((item, index) => (
                     <div key={index} className="flex items-start">
                       <div className="flex-shrink-0 mt-0.5">
@@ -185,8 +184,8 @@ const AboutUs = () => {
               >
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
-                    src="https://ifch.com.np/assets/images/banner/banner-2.jpg"
-                    alt="IFCH Hospital Building"
+                    src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
+                    alt="CMC Clinic Interior"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -196,8 +195,8 @@ const AboutUs = () => {
                       <Award className="h-5 w-5 text-primary/80" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-text text-sm">Recognized Excellence</h4>
-                      <p className="text-text/80 text-xs">Leading Pediatric Hospital in Nepal</p>
+                      <h4 className="font-medium text-text text-sm">NHPC Registered</h4>
+                      <p className="text-text/80 text-xs">PHY42 Certified Practitioner</p>
                     </div>
                   </div>
                 </div>
@@ -217,13 +216,14 @@ const AboutUs = () => {
                 className="bg-white p-8 rounded-xl shadow-sm border border-gray-200"
               >
                 <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-6 bg-blue-100">
-                  <HeartPulse className="h-6 w-6" />
+                  <Brain className="h-6 w-6" />
                 </div>
                 <h3 className="text-2xl font-semibold text-text mb-4">Our Mission</h3>
                 <p className="text-text/80">
-                  To provide high quality, compassionate and specialized healthcare services to children 
-                  in a child-friendly environment. We are dedicated to improving child health outcomes 
-                  through evidence-based treatments, preventive care, and health education for families.
+                  To provide exceptional, evidence-based neurophysiotherapy and rehabilitation services 
+                  that empower patients to achieve optimal recovery and functional independence. We are 
+                  committed to advancing neurological and orthopedic care through continuous learning 
+                  and innovative treatment approaches.
                 </p>
               </motion.div>
               
@@ -238,10 +238,10 @@ const AboutUs = () => {
                 </div>
                 <h3 className="text-2xl font-semibold text-text mb-4">Our Vision</h3>
                 <p className="text-text/80">
-                  To be the leading children's hospital in Nepal, recognized for clinical excellence in 
-                  pediatric care, patient-centered services, and community outreach. We aspire to set new 
-                  standards in children's healthcare while remaining accessible to families from all 
-                  socioeconomic backgrounds.
+                  To be the leading center for neurophysiotherapy and manual therapy in Nepal, recognized 
+                  for clinical excellence, research contributions, and transformative patient outcomes. 
+                  We aspire to set new standards in rehabilitation care while making advanced treatments 
+                  accessible to all who need them.
                 </p>
               </motion.div>
             </div>
@@ -266,7 +266,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text/80 max-w-2xl mx-auto"
               >
-                The principles that guide everything we do at International Friendship Children's Hospital
+                The principles that guide our practice and patient care at CMC Chiropractic and Manual Therapy
               </motion.p>
             </div>
             
@@ -308,7 +308,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text/80 max-w-2xl mx-auto"
               >
-                Key milestones in our growth and development
+                Key milestones in our growth and development as a leading neurophysiotherapy center
               </motion.p>
             </div>
             
@@ -353,7 +353,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5 }}
                 className="text-3xl font-bold text-text mb-3"
               >
-                Leadership <span className="text-primary">Team</span>
+                Our <span className="text-primary">Expert Team</span>
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -361,7 +361,7 @@ const AboutUs = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-text/80 max-w-2xl mx-auto"
               >
-                Experienced professionals guiding our mission forward
+                Highly qualified physiotherapists dedicated to your recovery
               </motion.p>
             </div>
             
@@ -374,12 +374,11 @@ const AboutUs = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200"
                 >
-                  <div className="h-60 overflow-hidden">
-                    <img
-                      src={leader.image}
-                      alt={leader.name}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="h-60 overflow-hidden bg-gray-200 flex items-center justify-center">
+                    <div className="text-gray-400 text-center">
+                      <Users className="h-12 w-12 mx-auto mb-2" />
+                      <p className="text-sm">Doctor Photo</p>
+                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-text mb-1">{leader.name}</h3>
@@ -399,10 +398,10 @@ const AboutUs = () => {
             <div className="bg-primary/90 rounded-2xl p-8 md:p-12 shadow-lg text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4">Experience the IFCH Difference</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">Start Your Recovery Journey</h2>
                   <p className="mb-6 opacity-90">
-                    Schedule a consultation with our pediatric specialists and discover why thousands of families 
-                    trust us with their children's healthcare needs.
+                    Schedule a consultation with our neurophysiotherapy specialists and discover 
+                    how our evidence-based treatments can help you achieve your recovery goals.
                   </p>
                   <Link
                     href="/appointment"
@@ -418,19 +417,19 @@ const AboutUs = () => {
                   <div className="space-y-3">
                     <div className="flex items-center">
                       <MapPin className="h-5 w-5 mr-3" />
-                      <span>Maharajgunj, Kathmandu, Nepal</span>
+                      <span>Saket Complex, Second Floor, Tripureshwor 11, KMC, Kathmandu, Nepal 44600</span>
                     </div>
                     <div className="flex items-center">
                       <Phone className="h-5 w-5 mr-3" />
-                      <span>01-5914999 / 01-5916444</span>
+                      <span>+977 9865366154</span>
                     </div>
                     <div className="flex items-center">
                       <Mail className="h-5 w-5 mr-3" />
-                      <span>info@ifch.com.np</span>
+                      <span>chiropracticmanual@gmail.com</span>
                     </div>
                     <div className="flex items-center">
                       <Clock className="h-5 w-5 mr-3" />
-                      <span>Open 24/7 for pediatric emergencies</span>
+                      <span>Sun-Sat: 7:00 AM - 7:00 PM</span>
                     </div>
                   </div>
                 </div>
