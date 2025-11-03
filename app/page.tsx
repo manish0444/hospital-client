@@ -135,7 +135,7 @@ const Home = () => {
               >
                 <div className="relative overflow-hidden rounded-xl shadow-2xl">
                   <img
-                    src="https://impeccabuild.com.au/medical-clinic-interior-design-ideas/"
+                    src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2xpbmljfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000"
                     alt="Physiotherapy Treatment"
                     className="w-full h-auto object-cover"
                   />
