@@ -1,10 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check, Clock, HeartPulse, Stethoscope, Users, Phone, MapPin, ArrowRight, Mail, Brain, Bone, Activity } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
       icon: <Stethoscope className="h-6 w-6" />,
@@ -81,6 +102,145 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-on-scroll {
+          opacity: 0;
+        }
+
+        .animate-on-scroll.animate-in {
+          animation-fill-mode: forwards;
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .fade-in-left {
+          animation: fadeInLeft 0.6s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .fade-in-right {
+          animation: fadeInRight 0.8s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .fade-in {
+          animation: fadeIn 0.5s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .delay-400 {
+          animation-delay: 0.4s;
+        }
+
+        .delay-100 {
+          animation-delay: 0.1s;
+        }
+
+        .delay-200ms {
+          animation-delay: 0.2s;
+        }
+
+        .delay-300ms {
+          animation-delay: 0.3s;
+        }
+
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+
+        .stagger-5 {
+          animation-delay: 0.5s;
+        }
+
+        .stagger-6 {
+          animation-delay: 0.6s;
+        }
+
+        .animate-on-scroll.animate-in {
+          animation-name: fadeInUp;
+          animation-duration: 0.5s;
+          animation-timing-function: ease-out;
+        }
+
+        .hover-lift {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .group:hover .group-hover-translate {
+          transform: translateX(4px);
+        }
+
+        .group-hover-translate {
+          transition: transform 0.2s ease;
+        }
+      `}</style>
+
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-white overflow-hidden">
@@ -88,30 +248,15 @@ const Home = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-28">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <motion.h1 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="text-4xl md:text-5xl font-bold leading-tight text-text"
-                >
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-text fade-in-up">
                   Expert <span className="text-primary">Neurophysiotherapy</span> & Rehabilitation
-                </motion.h1>
+                </h1>
                 
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-lg text-text max-w-lg"
-                >
+                <p className="text-lg text-text max-w-lg fade-in-up delay-200">
                   Specialized care for neurological and orthopedic conditions using evidence-based techniques including manual therapy, dry needling, and advanced rehabilitation protocols.
-                </motion.p>
+                </p>
                 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="flex flex-col sm:flex-row gap-4 pt-2"
-                >
+                <div className="flex flex-col sm:flex-row gap-4 pt-2 fade-in-up delay-400">
                   <Link
                     href="/appointment"
                     className="bg-primary text-white hover:bg-primary/80 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md"
@@ -124,15 +269,10 @@ const Home = () => {
                   >
                     Our Services
                   </Link>
-                </motion.div>
+                </div>
               </div>
               
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="relative hidden md:block"
-              >
+              <div className="relative hidden md:block fade-in-right">
                 <div className="relative overflow-hidden rounded-xl shadow-2xl">
                   <img
                     src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2xpbmljfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000"
@@ -151,7 +291,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -166,16 +306,13 @@ const Home = () => {
                 { value: "3+", label: "Research Publications" },
                 { value: "4", label: "Specialist Doctors" },
               ].map((stat, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-lg shadow-sm border border-gray-100"
+                  className={`animate-on-scroll bg-white p-6 rounded-lg shadow-sm border border-gray-100 stagger-${index + 1}`}
                 >
                   <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
                   <div className="text-text text-sm font-medium">{stat.label}</div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -186,12 +323,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-white/30 z-0"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
+              <div className="space-y-6 animate-on-scroll">
                 <h2 className="text-3xl font-bold text-text">About <span className="text-primary">CMC</span></h2>
                 <p className="text-text leading-relaxed">
                   CMC Chiropractic and Manual Therapy, founded by Dr. Tenzing Norbu Lama, is a leading neurophysiotherapy and rehabilitation center in Kathmandu. We specialize in evidence-based treatment for neurological and orthopedic conditions.
@@ -217,16 +349,11 @@ const Home = () => {
                   className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group"
                 >
                   Learn more about us
-                  <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                 </Link>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="relative"
-              >
+              <div className="relative animate-on-scroll">
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
                     src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
@@ -246,7 +373,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -255,40 +382,26 @@ const Home = () => {
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Our <span className="text-cta/80">Specialized Services</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text/80 max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text/80 max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 Comprehensive physiotherapy services using advanced evidence-based techniques.
-              </motion.p>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-200"
+                  className={`animate-on-scroll hover-lift bg-white p-6 rounded-xl shadow-sm border border-gray-200 stagger-${index + 1}`}
                 >
-                  <div className=" text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                  <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
                     {service.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-text mb-2">{service.title}</h3>
                   <p className="text-text/80">{service.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
             
@@ -308,32 +421,19 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-white/30 z-0"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Meet Our <span className="text-primary/80">Expert Team</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text/80 max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text/80 max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 Our team of highly qualified physiotherapists specialized in neurological and orthopedic rehabilitation.
-              </motion.p>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {doctors.map((doctor, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200"
+                  className={`animate-on-scroll bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200 stagger-${index + 1}`}
                 >
                   <div className="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
                     <div className="text-gray-400 text-center">
@@ -349,10 +449,10 @@ const Home = () => {
                       className="text-sm font-medium text-primary/80 hover:text-primary/70 transition-colors flex items-center group"
                     >
                       Book Appointment
-                      <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
             
@@ -371,32 +471,19 @@ const Home = () => {
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Patient <span className="text-primary/80">Testimonials</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 Hear what our patients say about their recovery journey with us.
-              </motion.p>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {testimonials.map((testimonial, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-gray-200"
+                  className={`animate-on-scroll bg-white p-6 rounded-xl shadow-sm border border-gray-200 stagger-${index + 1}`}
                 >
                   <div className="mb-5 text-primary/60">
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 32 32">
@@ -408,7 +495,7 @@ const Home = () => {
                     <p className="font-semibold text-text">{testimonial.author}</p>
                     <p className="text-text/70 text-sm">{testimonial.role}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -419,7 +506,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
+              <div className="space-y-6 animate-on-scroll">
                 <h2 className="text-3xl font-bold text-text">Visit Our Clinic</h2>
                 <p className="text-text/80">
                   Schedule your appointment for specialized neurophysiotherapy and rehabilitation services.
@@ -454,7 +541,7 @@ const Home = () => {
                   </Link>
                 </div>
               </div>
-              <div className="hidden md:block">
+              <div className="hidden md:block animate-on-scroll">
                 <div className="relative overflow-hidden rounded-xl shadow-xl">
                   <img
                     src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"

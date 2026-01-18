@@ -1,13 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check, Clock, Users, Phone, MapPin, ArrowRight, Mail, Brain, Bone, Activity, Award, Calendar, Filter, Search } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const DoctorsPage = () => {
   const [selectedDepartment, setSelectedDepartment] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const departments = [
     { id: "all", name: "All Specialties" },
@@ -85,29 +105,132 @@ const DoctorsPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .animate-on-scroll {
+          opacity: 0;
+        }
+
+        .animate-on-scroll.animate-in {
+          animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .delay-100ms {
+          animation-delay: 0.1s;
+        }
+
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+
+        .hover-lift {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-hover {
+          transition: all 0.2s ease;
+        }
+
+        .button-hover:hover {
+          transform: translateY(-1px);
+        }
+
+        .button-hover:active {
+          transform: translateY(0);
+        }
+
+        .group:hover .group-hover-translate {
+          transform: translateX(4px);
+        }
+
+        .group-hover-translate {
+          transition: transform 0.2s ease;
+        }
+
+        .input-focus {
+          transition: all 0.2s ease;
+        }
+
+        .input-focus:focus {
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .filter-appear {
+          animation: fadeInUp 0.4s ease-out forwards;
+        }
+      `}</style>
+
       <main className="flex-grow">
          <section className="relative bg-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10 py-10 md:py-18">
             <div className="text-center max-w-3xl mx-auto">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6"
-              >
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6 fade-in-up">
                 Our <span className="text-primary">Expert Physiotherapists</span>
-              </motion.h1>
+              </h1>
               
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-text mb-8"
-              >
+              <p className="text-lg text-text mb-8 fade-in-up delay-200">
                 Meet our team of dedicated physiotherapy specialists committed to providing 
                 evidence-based care for neurological and orthopedic conditions.
-              </motion.p>
+              </p>
             </div>
           </div>
         </section>
@@ -115,7 +238,7 @@ const DoctorsPage = () => {
         {/* Filter and Search Section */}
         <section className="py-12 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+            <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8 filter-appear">
               <h2 className="text-2xl font-bold text-text">Find the Right Specialist</h2>
               
               <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
@@ -124,7 +247,7 @@ const DoctorsPage = () => {
                   <input
                     type="text"
                     placeholder="Search doctors or specialties..."
-                    className="pl-10 pr-4 py-2 border text-text border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent w-full"
+                    className="pl-10 pr-4 py-2 border text-text border-gray-300 rounded-lg input-focus w-full"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
@@ -133,7 +256,7 @@ const DoctorsPage = () => {
                 <div className="relative">
                   <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <select
-                    className="pl-10 pr-8 py-2 text-text border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent w-full"
+                    className="pl-10 pr-8 py-2 text-text border border-gray-300 rounded-lg input-focus w-full"
                     value={selectedDepartment}
                     onChange={(e) => setSelectedDepartment(e.target.value)}
                   >
@@ -148,13 +271,9 @@ const DoctorsPage = () => {
             {/* Doctors Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {filteredDoctors.map((doctor, index) => (
-                <motion.div
+                <div
                   key={doctor.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
+                  className={`animate-on-scroll hover-lift bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 stagger-${index + 1}`}
                 >
                   <div className="h-64 overflow-hidden relative bg-gray-200 flex items-center justify-center">
                     <div className="text-gray-400 text-center">
@@ -201,18 +320,18 @@ const DoctorsPage = () => {
                         className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group"
                       >
                         View Profile
-                        <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                       </Link>
                       
                       <Link
                         href={`/appointment?doctor=${doctor.id}`}
-                        className="inline-flex items-center bg-primary text-white hover:bg-primary/90 px-4 py-2 rounded-lg font-medium transition-colors text-sm"
+                        className="inline-flex items-center bg-primary text-white hover:bg-primary/90 px-4 py-2 rounded-lg font-medium transition-colors text-sm button-hover"
                       >
                         Book Appointment
                       </Link>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
             
@@ -228,22 +347,12 @@ const DoctorsPage = () => {
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Why Choose <span className="text-primary">Our Physiotherapy Team</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text/80 max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text/80 max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 Our team is dedicated to providing evidence-based physiotherapy care with proven results.
-              </motion.p>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -264,19 +373,16 @@ const DoctorsPage = () => {
                   icon: <Users className="h-8 w-8 text-primary" />
                 }
               ].map((item, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gray-50 p-6 rounded-xl text-center"
+                  className={`animate-on-scroll bg-gray-50 p-6 rounded-xl text-center stagger-${index + 1}`}
                 >
                   <div className="bg-blue-100 p-3 rounded-lg w-14 h-14 flex items-center justify-center mx-auto mb-4">
                     {item.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-text mb-2">{item.title}</h3>
                   <p className="text-text/80">{item.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -296,14 +402,14 @@ const DoctorsPage = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       href="/appointment"
-                      className="inline-flex items-center justify-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                      className="inline-flex items-center justify-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md button-hover"
                     >
                       Book Appointment
                       <Calendar className="h-4 w-4 ml-2" />
                     </Link>
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center bg-transparent border border-white text-white hover:bg-white/10 px-6 py-3 rounded-lg font-medium transition-colors"
+                      className="inline-flex items-center justify-center bg-transparent border border-white text-white hover:bg-white/10 px-6 py-3 rounded-lg font-medium transition-colors button-hover"
                     >
                       Contact Us
                       <Phone className="h-4 w-4 ml-2" />

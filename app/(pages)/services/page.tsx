@@ -1,10 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check, Clock, HeartPulse, Stethoscope, Users, Phone, MapPin, ArrowRight, Mail, Microscope, Brain, Bone, Ambulance, Eye, Syringe, Hospital, Radio, Zap, Settings, Activity } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const ServicesPage = () => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
 const services = [
   {
     id: "physiotherapy",
@@ -120,30 +141,96 @@ const services = [
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-on-scroll {
+          opacity: 0;
+        }
+
+        .animate-on-scroll.animate-in {
+          animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+        .stagger-7 { animation-delay: 0.7s; }
+        .stagger-8 { animation-delay: 0.8s; }
+        .stagger-9 { animation-delay: 0.9s; }
+
+        .hover-lift {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-hover {
+          transition: all 0.2s ease;
+        }
+
+        .button-hover:hover {
+          transform: translateY(-1px);
+        }
+
+        .button-hover:active {
+          transform: translateY(0);
+        }
+
+        .group:hover .group-hover-translate {
+          transform: translateX(4px);
+        }
+
+        .group-hover-translate {
+          transition: transform 0.2s ease;
+        }
+
+        .service-image {
+          transition: transform 0.3s ease;
+        }
+
+        .hover-lift:hover .service-image {
+          transform: scale(1.05);
+        }
+      `}</style>
+
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10 py-10 md:py-18">
             <div className="text-center max-w-3xl mx-auto">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6"
-              >
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6 fade-in-up">
                 Our <span className="text-primary">Medical Services</span>
-              </motion.h1>
+              </h1>
               
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-text mb-8"
-              >
+              <p className="text-lg text-text mb-8 fade-in-up delay-200">
                 Comprehensive healthcare services delivered with compassion and expertise. 
                 We offer a wide range of medical specialties to meet all your healthcare needs.
-              </motion.p>
+              </p>
             </div>
           </div>
         </section>
@@ -153,19 +240,15 @@ const services = [
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
+                  className={`animate-on-scroll hover-lift bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 stagger-${index + 1}`}
                 >
                   <div className="h-48 overflow-hidden">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover service-image"
                     />
                   </div>
                   <div className="p-6">
@@ -193,10 +276,10 @@ const services = [
                       className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group mt-2"
                     >
                       Learn more about this service
-                      <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -216,10 +299,10 @@ const services = [
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                    className="inline-flex items-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md button-hover group"
                   >
                     Contact Us
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                   </Link>
                 </div>
                 
@@ -228,11 +311,11 @@ const services = [
                   <div className="space-y-3">
                     <div className="flex items-center">
                       <Phone className="h-5 w-5 mr-3" />
-                      <span>+977-1-4123456</span>
+                      <span>+977 9865366154</span>
                     </div>
                     <div className="flex items-center">
                       <Mail className="h-5 w-5 mr-3" />
-                      <span>info@meridianpolyclinic.com</span>
+                      <span>chiropracticmanual@gmail.com</span>
                     </div>
                     <div className="flex items-center">
                       <Clock className="h-5 w-5 mr-3" />

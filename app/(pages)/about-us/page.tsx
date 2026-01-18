@@ -1,10 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check, Clock, HeartPulse, Users, Award, Calendar, MapPin, Phone, Mail, ArrowRight, Brain, Bone, Activity } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const AboutUs = () => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const values = [
     {
       icon: <Brain className="h-6 w-6" />,
@@ -58,50 +79,176 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-on-scroll {
+          opacity: 0;
+        }
+
+        .animate-on-scroll.animate-in {
+          animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .fade-in-left {
+          animation: fadeInLeft 0.6s ease-out forwards;
+        }
+
+        .fade-in-right {
+          animation: fadeInRight 0.6s ease-out forwards;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .delay-400 {
+          animation-delay: 0.4s;
+        }
+
+        .delay-100ms {
+          animation-delay: 0.1s;
+        }
+
+        .delay-200ms {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+
+        .hover-lift {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item-left {
+          animation: fadeInLeft 0.5s ease-out forwards;
+        }
+
+        .timeline-item-right {
+          animation: fadeInRight 0.5s ease-out forwards;
+        }
+
+        .animate-on-scroll.timeline-left.animate-in {
+          animation: fadeInLeft 0.5s ease-out forwards;
+        }
+
+        .animate-on-scroll.timeline-right.animate-in {
+          animation: fadeInRight 0.5s ease-out forwards;
+        }
+
+        .button-hover {
+          transition: all 0.2s ease;
+        }
+
+        .button-hover:hover {
+          transform: translateY(-1px);
+        }
+
+        .button-hover:active {
+          transform: translateY(0);
+        }
+
+        .group:hover .group-hover-translate {
+          transform: translateX(4px);
+        }
+
+        .group-hover-translate {
+          transition: transform 0.2s ease;
+        }
+      `}</style>
+
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-28">
             <div className="text-center max-w-3xl mx-auto">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6"
-              >
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6 fade-in-up">
                 About <span className="text-primary">CMC Chiropractic & Manual Therapy</span>
-              </motion.h1>
+              </h1>
               
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-text mb-8"
-              >
+              <p className="text-lg text-text mb-8 fade-in-up delay-200">
                 Leading neurophysiotherapy and rehabilitation center in Kathmandu, specializing in evidence-based 
                 treatments for neurological and orthopedic conditions using advanced manual therapy techniques.
-              </motion.p>
+              </p>
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex justify-center gap-4 pt-2"
-              >
+              <div className="flex justify-center gap-4 pt-2 fade-in-up delay-400">
                 <Link
                   href="/contact"
-                  className="bg-primary text-white hover:bg-primary/80 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md"
+                  className="bg-primary text-white hover:bg-primary/80 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md button-hover"
                 >
                   Contact Us
                 </Link>
                 <Link
                   href="/services"
-                  className="border border-primary text-primary hover:bg-primary/20 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md"
+                  className="border border-primary text-primary hover:bg-primary/20 px-6 py-3 rounded-lg font-medium text-center transition-colors shadow-sm hover:shadow-md button-hover"
                 >
                   Our Services
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -116,16 +263,13 @@ const AboutUs = () => {
                 { value: "10+", label: "Years Experience" },
                 { value: "3+", label: "Research Publications" }
               ].map((stat, index) => (
-                <motion.div 
+                <div 
                   key={index}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-lg shadow-sm border border-gray-100"
+                  className={`animate-on-scroll bg-white p-6 rounded-lg shadow-sm border border-gray-100 stagger-${index + 1}`}
                 >
                   <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
                   <div className="text-text text-sm font-medium">{stat.label}</div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -136,12 +280,7 @@ const AboutUs = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-white/30 z-0"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
+              <div className="space-y-6 animate-on-scroll">
                 <h2 className="text-3xl font-bold text-text">
                   Our <span className="text-primary">Story</span>
                 </h2>
@@ -174,14 +313,9 @@ const AboutUs = () => {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="relative"
-              >
+              <div className="relative animate-on-scroll">
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
                     src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80"
@@ -200,7 +334,7 @@ const AboutUs = () => {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -209,12 +343,7 @@ const AboutUs = () => {
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="bg-white p-8 rounded-xl shadow-sm border border-gray-200"
-              >
+              <div className="animate-on-scroll bg-white p-8 rounded-xl shadow-sm border border-gray-200">
                 <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-6 bg-blue-100">
                   <Brain className="h-6 w-6" />
                 </div>
@@ -225,14 +354,9 @@ const AboutUs = () => {
                   committed to advancing neurological and orthopedic care through continuous learning 
                   and innovative treatment approaches.
                 </p>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white p-8 rounded-xl shadow-sm border border-gray-200"
-              >
+              <div className="animate-on-scroll bg-white p-8 rounded-xl shadow-sm border border-gray-200 delay-100ms">
                 <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-6 bg-blue-100">
                   <Award className="h-6 w-6" />
                 </div>
@@ -243,7 +367,7 @@ const AboutUs = () => {
                   We aspire to set new standards in rehabilitation care while making advanced treatments 
                   accessible to all who need them.
                 </p>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -252,39 +376,26 @@ const AboutUs = () => {
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Our <span className="text-primary">Values</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text/80 max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text/80 max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 The principles that guide our practice and patient care at CMC Chiropractic and Manual Therapy
-              </motion.p>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-gray-200 text-center"
+                  className={`animate-on-scroll hover-lift bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200 text-center stagger-${index + 1}`}
                 >
                   <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4 mx-auto bg-blue-100">
                     {value.icon}
                   </div>
                   <h3 className="text-xl font-semibold text-text mb-2">{value.title}</h3>
                   <p className="text-text/80 text-sm">{value.description}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -294,22 +405,12 @@ const AboutUs = () => {
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Our <span className="text-primary">Journey</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text/80 max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text/80 max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 Key milestones in our growth and development as a leading neurophysiotherapy center
-              </motion.p>
+              </p>
             </div>
             
             <div className="relative">
@@ -317,12 +418,9 @@ const AboutUs = () => {
               
               <div className="space-y-12">
                 {milestones.map((milestone, index) => (
-                  <motion.div 
+                  <div 
                     key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                    className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} animate-on-scroll ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'} stagger-${index + 1}`}
                   >
                     <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
                       <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
@@ -336,7 +434,7 @@ const AboutUs = () => {
                     </div>
                     
                     <div className="w-1/2"></div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -347,32 +445,19 @@ const AboutUs = () => {
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl font-bold text-text mb-3"
-              >
+              <h2 className="text-3xl font-bold text-text mb-3 animate-on-scroll">
                 Our <span className="text-primary">Expert Team</span>
-              </motion.h2>
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-text/80 max-w-2xl mx-auto"
-              >
+              </h2>
+              <p className="text-text/80 max-w-2xl mx-auto animate-on-scroll delay-100ms">
                 Highly qualified physiotherapists dedicated to your recovery
-              </motion.p>
+              </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {leadership.map((leader, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all border border-gray-200"
+                  className={`animate-on-scroll hover-lift bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200 stagger-${index + 1}`}
                 >
                   <div className="h-60 overflow-hidden bg-gray-200 flex items-center justify-center">
                     <div className="text-gray-400 text-center">
@@ -385,7 +470,7 @@ const AboutUs = () => {
                     <p className="text-primary/80 text-sm mb-3">{leader.position}</p>
                     <p className="text-text/70 text-sm">{leader.bio}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -405,10 +490,10 @@ const AboutUs = () => {
                   </p>
                   <Link
                     href="/appointment"
-                    className="inline-flex items-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                    className="inline-flex items-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md button-hover group"
                   >
                     Book Appointment
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                   </Link>
                 </div>
                 

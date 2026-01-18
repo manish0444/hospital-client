@@ -1,10 +1,31 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Phone, MapPin, Mail, Calendar, Clock, ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const ContactPage = () => {
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const faqs = [
     {
       question: "What are your clinic hours?",
@@ -35,30 +56,167 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes fadeInSmall {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-on-scroll {
+          opacity: 0;
+        }
+
+        .animate-on-scroll.animate-in {
+          animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .fade-in-left {
+          animation: fadeInLeft 0.5s ease-out forwards;
+        }
+
+        .fade-in-right {
+          animation: fadeInRight 0.6s ease-out forwards;
+        }
+
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+
+        .delay-100ms {
+          animation-delay: 0.1s;
+        }
+
+        .delay-200ms {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-1 {
+          animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+          animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+          animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+          animation-delay: 0.4s;
+        }
+
+        .stagger-5 {
+          animation-delay: 0.5s;
+        }
+
+        .stagger-6 {
+          animation-delay: 0.6s;
+        }
+
+        .animate-on-scroll.fade-left.animate-in {
+          animation: fadeInLeft 0.5s ease-out forwards;
+        }
+
+        .animate-on-scroll.fade-right.animate-in {
+          animation: fadeInRight 0.6s ease-out forwards;
+        }
+
+        .animate-on-scroll.fade-small.animate-in {
+          animation: fadeInSmall 0.3s ease-out forwards;
+        }
+
+        .hover-lift {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-hover {
+          transition: all 0.2s ease;
+        }
+
+        .button-hover:hover {
+          transform: translateY(-1px);
+        }
+
+        .button-hover:active {
+          transform: translateY(0);
+        }
+
+        .group:hover .group-hover-translate {
+          transform: translateX(4px);
+        }
+
+        .group-hover-translate {
+          transition: transform 0.2s ease;
+        }
+
+        .link-hover {
+          transition: color 0.2s ease;
+        }
+      `}</style>
+
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-white overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-white z-0"></div>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 relative z-10 py-10 md:py-18">
             <div className="text-center max-w-3xl mx-auto">
-              <motion.h1 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6"
-              >
+              <h1 className="text-4xl md:text-5xl font-bold leading-tight text-text mb-6 fade-in-up">
                 Contact <span className="text-primary">CMC Physiotherapy</span>
-              </motion.h1>
+              </h1>
               
-              <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-text mb-8"
-              >
+              <p className="text-lg text-text mb-8 fade-in-up delay-200">
                 Get in touch with our expert physiotherapy team for personalized care and treatment. 
                 We&apos;re here to help you on your journey to better health and mobility.
-              </motion.p>
+              </p>
             </div>
           </div>
         </section>
@@ -69,31 +227,19 @@ const ContactPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Cards */}
               <div className="space-y-6">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
-                >
+                <div className="animate-on-scroll fade-left bg-white rounded-xl shadow-sm hover-lift overflow-hidden border border-gray-200">
                   <div className="p-6">
                     <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-100">
                       <Phone className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-semibold text-text mb-2">Call Us</h3>
-                    <a href="tel:++9779865366154" className="text-primary font-medium text-lg hover:text-primary/80 transition-colors">
+                    <a href="tel:++9779865366154" className="text-primary font-medium text-lg link-hover">
                       +977 9865366154
                     </a>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
-                >
+                <div className="animate-on-scroll fade-left stagger-1 bg-white rounded-xl shadow-sm hover-lift overflow-hidden border border-gray-200">
                   <div className="p-6">
                     <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-100">
                       <MapPin className="h-6 w-6" />
@@ -105,35 +251,23 @@ const ContactPage = () => {
                       Kathmandu, Nepal 44600
                     </p>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
-                >
+                <div className="animate-on-scroll fade-left stagger-2 bg-white rounded-xl shadow-sm hover-lift overflow-hidden border border-gray-200">
                   <div className="p-6">
                     <div className="text-primary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-100">
                       <Mail className="h-6 w-6" />
                     </div>
                     <h3 className="text-xl font-semibold text-text mb-2">Email Us</h3>
-                    <a href="mailto:chiropracticmanual@gmail.com" className="text-primary font-medium hover:text-primary/80 transition-colors break-all">
+                    <a href="mailto:chiropracticmanual@gmail.com" className="text-primary font-medium link-hover break-all">
                       chiropracticmanual@gmail.com
                     </a>
                   </div>
-                </motion.div>
+                </div>
               </div>
 
               {/* Map */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200"
-              >
+              <div className="animate-on-scroll fade-right bg-white rounded-xl shadow-sm overflow-hidden border border-gray-200">
                 <div className="h-full min-h-[400px]">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.834372435158!2d85.31623257533755!3d27.69384017619125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1966b0e0a519%3A0x5b844a12c267c590!2sTripureshwor%2C%20Kathmandu%2044600%2C%20Nepal!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
@@ -145,7 +279,7 @@ const ContactPage = () => {
                     referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -155,13 +289,7 @@ const ContactPage = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Clinic Hours */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
-              >
+              <div className="animate-on-scroll bg-white rounded-xl shadow-sm hover-lift overflow-hidden border border-gray-200">
                 <div className="p-6">
                   <h2 className="text-xl font-bold text-text mb-4 flex items-center">
                     <Clock className="h-5 w-5 mr-2 text-primary" />
@@ -179,47 +307,38 @@ const ContactPage = () => {
                   </div>
                   <Link
                     href="/appointment"
-                    className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group"
+                    className="inline-flex items-center text-primary font-medium link-hover group"
                   >
                     Book Appointment
-                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Our Services */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200"
-              >
+              <div className="animate-on-scroll stagger-1 bg-white rounded-xl shadow-sm hover-lift overflow-hidden border border-gray-200">
                 <div className="p-6">
                   <h2 className="text-xl font-bold text-text mb-4">Our Services</h2>
                   <div className="grid grid-cols-2 gap-2 mb-6">
                     {services.map((service, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="flex items-center text-sm text-text/80"
+                        className={`flex items-center text-sm text-text/80 animate-on-scroll fade-small stagger-${index + 1}`}
                       >
                         <Check className="h-4 w-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
                         {service}
-                      </motion.div>
+                      </div>
                     ))}
                   </div>
                   <Link
                     href="/services"
-                    className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors group"
+                    className="inline-flex items-center text-primary font-medium link-hover group"
                   >
                     View All Services
-                    <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-4 w-4 ml-2 group-hover-translate" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -227,27 +346,18 @@ const ContactPage = () => {
         {/* FAQ Section */}
         <section className="py-16 md:py-24 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold text-text mb-8 text-center"
-            >
+            <h2 className="text-2xl font-bold text-text mb-8 text-center animate-on-scroll">
               Frequently Asked Questions
-            </motion.h2>
+            </h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <motion.div
+                <div
                   key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-sm transition-all"
+                  className={`animate-on-scroll bg-white border border-gray-200 rounded-xl p-6 hover:shadow-sm transition-all stagger-${index + 1}`}
                 >
                   <h3 className="font-semibold text-text mb-2">{faq.question}</h3>
                   <p className="text-text/80 text-sm">{faq.answer}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -268,14 +378,14 @@ const ContactPage = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a
                       href="tel:++9779865366154"
-                      className="inline-flex items-center justify-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                      className="inline-flex items-center justify-center bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md button-hover"
                     >
                       <Phone className="h-4 w-4 mr-2" />
                       Call Now
                     </a>
                     <Link
                       href="/appointment"
-                      className="inline-flex items-center justify-center border border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-lg font-medium transition-colors"
+                      className="inline-flex items-center justify-center border border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-lg font-medium transition-colors button-hover"
                     >
                       <Calendar className="h-4 w-4 mr-2" />
                       Book Appointment
